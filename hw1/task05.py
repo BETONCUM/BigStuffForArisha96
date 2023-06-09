@@ -16,7 +16,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
     
     # a loop that iterates over the lengths of subarrays 
     for index in range(1, k):
-        # цикл перебора чисел листа 
+        # loop through the numbers of the sheet
         for num_index in range(0, len(nums)):
             # variable maximum subarray length
             nums_max_len = num_index+index+1
