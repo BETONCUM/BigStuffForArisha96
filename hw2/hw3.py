@@ -17,5 +17,14 @@ assert combinations([1, 2], [3, 4]) == [
 from typing import List, Any
 
 
-def combinations(*args: List[Any]) -> List[List]:
-    ...
+def combinations(args: List[Any]) -> List[List]:
+    if len(args) == 1:
+        return [[item] for item in args[0]]
+#check against the base case of recursion, where we return a list of lists with one element from the first list
+    sub_combinations = combinations(args[1:])
+    result = []
+    for item in args[0]:
+        for sub_combination in sub_combinations:
+            result.append([item] + sub_combination)
+    return result
+

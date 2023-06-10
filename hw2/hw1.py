@@ -30,10 +30,8 @@ def count_punctuation_chars(file_path: str) -> int:
 
 
 def count_non_ascii_chars(file_path: str) -> int:
-    ...
+    #i don't know how to do this :(
 
 
-def get_most_common_non_ascii_char(file_path: str) -> str:
- f = 5 
-
-
+def get_most_common_non_ascii_char(file_path: str) -> str: 
+    #this too :((((

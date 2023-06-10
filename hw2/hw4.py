@@ -22,4 +22,16 @@ from collections import Callable
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    # Create a dictionary to store cached values
+    cache = {}
+
+    def cached_func(args):
+        # Check if the arguments are already in the cache
+        if args in cache:
+            # Return the cached result
+            return cache[args]
+        result = func(args)
+        cache[args] = result
+        return result
+        # Return the cached function
+    return cached_func
