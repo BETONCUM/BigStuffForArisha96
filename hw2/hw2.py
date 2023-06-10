@@ -21,4 +21,5 @@ from typing import List, Tuple
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    ...
+    arr = sorted([(inp.count(num), num) for num in set(inp)], key=lambda x: x[0])
+    return [arr[-1][1], arr[0][1]]
