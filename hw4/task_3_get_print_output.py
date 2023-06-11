@@ -25,5 +25,11 @@ You will learn:
 """
 
 
+import sys
+
+
 def my_precious_logger(text: str):
-    pass
+    if text.startswith("error"):  # Проверяем, начинается ли строка с "error"
+        print(text, file=sys.stderr)  # Выводим текст в поток ошибок (stderr)
+    else:
+        print(text)  # Выводим текст в стандартный поток вывода (stdout)

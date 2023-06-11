@@ -27,4 +27,15 @@ You will learn:
 
 
 def read_magic_number(path: str) -> bool:
-    ...
+    try:
+        with open(path, 'r') as file:
+            first_line = file.readline().strip()  # Read the first line of the file and remove leading/trailing whitespace
+            number = float(first_line)  # Convert the first line to a float number
+            if 1 <= number < 3:  # Check if the number is in the interval [1, 3)
+                return True
+            else:
+                return False
+    except ValueError:  # Handle the error when converting the string to a number
+        raise ValueError("Invalid number in the file.")  # Raise an exception with an error message
+    except FileNotFoundError:  # Handle the error when the file is not found
+        raise ValueError("File not found.")  # Raise an exception with an error message

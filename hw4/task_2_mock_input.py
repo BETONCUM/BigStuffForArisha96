@@ -27,5 +27,15 @@ You will learn:
 """
 
 
+import requests
+
+
 def count_dots_on_i(url: str) -> int:
-    ...
+    try:
+        response = requests.get(url)  # Отправляем GET-запрос к указанному URL
+        response.raise_for_status()  # Проверяем код состояния ответа (HTTP-статус)
+        html_content = response.text  # Получаем содержимое HTML-страницы
+        count = html_content.count('i')  # Считаем количество символов 'i' в HTML
+        return count
+    except requests.exceptions.RequestException:
+        raise ValueError(f"Unreachable {url}") 
