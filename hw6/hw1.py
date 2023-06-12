@@ -29,8 +29,26 @@ example_tree = {
 
 
 def find_occurrences(tree: dict, element: Any) -> int:
-    ...
+    count = 0
 
+    # Проверяем каждый элемент в дереве
+    for value in tree.values():
+        if value == element:
+            count += 1
+        elif isinstance(value, (list, tuple, set)):
+            # Если элемент является списком, кортежем или множеством,
+            # проверяем каждый элемент внутри него рекурсивно
+            for item in value:
+                if item == element:
+                    count += 1
+                elif isinstance(item, dict):
+                    # Если элемент является словарем, вызываем функцию рекурсивно
+                    count += find_occurrences(item, element)
+        elif isinstance(value, dict):
+            # Если элемент является словарем, вызываем функцию рекурсивно
+            count += find_occurrences(value, element)
+
+    return count
 
 if __name__ == '__main__':
     print(find_occurrences(example_tree, "RED"))  # 6
